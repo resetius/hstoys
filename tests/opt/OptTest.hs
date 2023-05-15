@@ -9,8 +9,31 @@ test1 = TestCase (assertEqual "should return 1" 1 (optFunc 1))
 test2 :: Test
 test2 = TestCase (assertEqual "should return 2" 2 (optFunc 2))
 
+test3 :: Test
+test3 = TestCase (assertEqual "test3" [1,0] (scanrr (\x y z -> x + y) 0 [1]))
+
+test4 :: Test
+test4 = TestCase (assertEqual "test4" [3,2,0] (scanrr (\x y z -> x + y) 0 [1,2]))
+
+test5 :: Test
+test5 = TestCase (assertEqual "test5" [10,9,7,4,0] (scanrr (\x y z -> x + y) 0 [1..4]))
+
+test6 :: Test
+test6 = TestCase (assertEqual "test6" [42] (scanrr (\x y z -> x + y) 42 []))
+
+test7 :: Test
+test7 = TestCase (assertEqual "splits" [([0],[0])] (splits [1, 2]))
+
 tests :: Test
-tests = TestList [TestLabel "test1" test1, TestLabel "test2" test2]
+tests = TestList [
+    TestLabel "test1" test1,
+    TestLabel "test2" test2,
+    TestLabel "test3" test3,
+    TestLabel "test4" test4,
+    TestLabel "test5" test5,
+    TestLabel "test6" test6,
+    TestLabel "test7" test7
+    ]
 
 main :: IO ()
 main = do
