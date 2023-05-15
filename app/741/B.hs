@@ -32,7 +32,7 @@ calc2 _ | otherwise = Nothing
 (<||>) :: (Monoid a, Eq a) => a -> a -> a
 x <||> y
      | x == mempty = y
-     | True = x
+     | otherwise = x
 
 -- 77, 33
 calc3 :: Char -> String -> Maybe String
