@@ -1,6 +1,10 @@
-module Opt (optFunc, optMatMult, scanrr, splits) where
+module Opt (optFunc, optMatMult, scanrr, splits, splits1) where
 
-splits = scanrr (\x (y,_) z -> (x:y, z)) ([],[])
+splits1 :: [a] -> [a] -> [([a],[a])] -> [([a],[a])]
+splits1 [] x acc = (x,[]) : acc
+splits1 (x:xs) y acc = splits1 xs (x:y) ((y,x:xs):acc)
+
+splits x =  splits1 x [] []
 
 scanrr f z [] = [z]
 scanrr f z (x:xs) =
