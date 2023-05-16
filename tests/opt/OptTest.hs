@@ -30,6 +30,9 @@ test8 = TestCase (assertEqual "splits" [([3,2,1],[]),([2,1],[3]),([1],[2,3]),([]
 test9 :: Test
 test9 = TestCase (assertEqual "splits" [([4,3,2,1],[]),([3,2,1],[4]),([2,1],[3,4]),([1],[2,3,4]),([],[1,2,3,4])] (splits [1, 2, 3, 4]))
 
+test10 :: Test
+test10 = TestCase (assertEqual "matOpt" (7500, 10, 50) (optMatMult [10, 100, 5, 50]))
+
 tests :: Test
 tests = TestList [
     TestLabel "test1" test1,
@@ -40,7 +43,8 @@ tests = TestList [
     TestLabel "test6" test6,
     TestLabel "test7" test7,
     TestLabel "test8" test8,
-    TestLabel "test9" test9
+    TestLabel "test9" test9,
+    TestLabel "test10" test10
     ]
 
 main :: IO ()
